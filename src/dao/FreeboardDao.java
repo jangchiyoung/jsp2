@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionException;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import dto.Freeboard;
@@ -53,5 +54,13 @@ public class FreeboardDao {
 		mapper.update("update", dto);
 		mapper.commit();
 		mapper.close();
+	}
+	
+	public int delete(int idx) {
+		SqlSession mapper = sqlFactory.openSession();
+		int n = mapper.delete("delete", idx);
+		mapper.commit();
+		mapper.close();
+		return n;
 	}
 }

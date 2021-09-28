@@ -15,8 +15,8 @@ function post_data() {
 <body>
 <h3>동아리 커뮤니티 글 수정</h3>
 <hr>
-<form name="frm1" method="post" action="updateAction.jsp">
- 
+<form name="frm1" method="post" action="updateSave.jsp">
+ <input type="hidden" name="idx" value="${bean.idx}">
  <table>
  	<tr><td width="35%" class="td1">제목</td>
  		<td><input type="text" name="subject" value="${bean.subject }" size="50" required></td>
