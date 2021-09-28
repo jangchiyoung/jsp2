@@ -27,7 +27,7 @@ public class FreeboardDao {
 		return list;
 	}
 	//idx로 한개 행 조회
-	public Freeboard selectByIdx(int idx) {
+	public Freeboard getOne(int idx) {
 		SqlSession mapper = sqlFactory.openSession();
 		Freeboard dto = mapper.selectOne("selectByIdx",idx);
 		mapper.close();
