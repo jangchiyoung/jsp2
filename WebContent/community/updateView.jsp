@@ -10,7 +10,7 @@ function post_data() {
 	frm1.submit();
 }
 </script>
-<link rel="stylesheet" href="../css/temp.css">
+<link rel="stylesheet" href="../css/temp.css?v=3">
 </head>
 <body>
 <h3>동아리 커뮤니티 글 수정</h3>
@@ -19,17 +19,17 @@ function post_data() {
  
  <table>
  	<tr><td width="35%" class="td1">제목</td>
- 		<td><input type="text" name="subject" value="${bean.subject }" size="50" required="required"></td>
+ 		<td><input type="text" name="subject" value="${bean.subject }" size="50" required></td>
  	</tr>
  	<tr><td class="td1">작성자</td>
- 		<td><input type="text" name="name" value="name" size="50" disabled></td>
+ 		<td><input type="text" name="name" value="${bean.name}" size="50" disabled></td>
  	</tr>
  	
  	<tr><td class="td1">글 비밀번호</td>
  		<td><input type="password" name="password" size="70" class="input1"></td>
  	</tr>
  	<tr><td class="td1">내용</td>  <!-- textarea 의 크기 : rows="20" cols="80" -->
- 		<td><textarea  rows="20" cols="80" name="content" required="required">${bean.content}</textarea></td>
+ 		<td><textarea  rows="20" cols="80" name="content" required>${bean.content}</textarea></td>
  	</tr>
  	<tr><td colspan="2" align="center">
  	<input type="submit" value="저장">

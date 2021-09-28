@@ -47,4 +47,11 @@ public class FreeboardDao {
 			mapper.commit();
 			mapper.close();
 		}
+	
+	public void update(Freeboard dto) {
+		SqlSession mapper = sqlFactory.openSession();
+		mapper.update("update", dto);
+		mapper.commit();
+		mapper.close();
+	}
 }

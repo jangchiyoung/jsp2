@@ -17,7 +17,7 @@ function post_data() {
 <h3>동아리 커뮤니티 글 쓰기</h3>
 <hr>
 <form name="frm1" method="post" action="insertAction.jsp">
-<input type="hidden" name="ip" value="${request.remoteAddr}">
+<%-- <input type="hidden" name="ip" value="$pageContext.request.remoteAddr}"> --%>
  <table>
  	<tr><th>제목</th>
  		<td><input type="text" name="subject" size="50" required="required"></td>
@@ -36,7 +36,7 @@ function post_data() {
  	<tr><td colspan="2" align="center">
  	<input type="submit" value="저장" class="btn" >
  	<input type="reset"  value="다시쓰기" class="btn">
- 	<input type="button" value="목록" onclick="location.href='listAction.jsp'" class="btn">
+ 	<input type="button" value="목록" class="btn" onclick="location.href='listAction.jsp'">
  	</td></tr>
  </table>
  </form>
