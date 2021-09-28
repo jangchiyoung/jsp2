@@ -48,7 +48,10 @@
  	</a>&nbsp;&nbsp;&nbsp;작성글 총 개수 : 
 </div><!--  request.contextPath : request.getContextPath 메소 실행 결과와 동일
 			listAction.jsp에서 pageContext 객체를 사용하여 listView.jsp로 요청이 전달되었기 때문에
-			pageContext.request 로 합니다.-->
+			pageContext.request 로 합니다.
+			
+			pageContext 객체(jsp내장객체 ) : jsp 파일(jsp페이지) 1개와 대응되는 객체
+			-->
 </div>
 </body>
 </html>

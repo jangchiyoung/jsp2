@@ -17,7 +17,7 @@ public class FreeboardDao {
 	}
 	
 		SqlSessionFactory sqlFactory = SqlSessionBean.getSessionFactory();
-	
+	//모든 테이블 데이터 조회
 	public List<Freeboard> getList(Map<String, Integer> map){ 
 					//key(변수명처럼 이해) String, value 는 int
 		List<Freeboard> list = null;
@@ -40,4 +40,11 @@ public class FreeboardDao {
 		mapper.close();
 		return cnt;
 	}
+	//테이블 데이터 추가
+	public void insert(Freeboard dto) {
+			SqlSession mapper = sqlFactory.openSession();
+			mapper.insert("insert", dto);
+			mapper.commit();
+			mapper.close();
+		}
 }
