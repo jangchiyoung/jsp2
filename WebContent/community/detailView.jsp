@@ -56,6 +56,7 @@
 	<!-- 메인글 출력 끝 -->
 	<!-- 댓글 시작 -->
 	<form action="commentAction.jsp" method="post" name="frmCmt">
+	<input type="hidden" name="mref" value="${bean.idx }">
 		<hr class="line">
 		<div>
 			<span>댓글</span>
@@ -88,9 +89,9 @@
 			<c:forEach var="cmt" items="${cmtlist }">
 			<li>
 				<ul>
-					<li>${cmt.name }</li> 
-					<li>${cmt.ip }</li> 
-					<li>${cmt.wdate }</li> 
+					<li style="font-size: 0.5px">${cmt.name }</li> 
+					<li style="font-size: 0.5px">${cmt.ip }</li> 
+					<li style="font-size: 0.5px">${cmt.wdate }</li> 
 				</ul>
 			</li>
 			<li>

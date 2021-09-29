@@ -36,7 +36,7 @@ public class CommentDao {
 		mapper.close();
 	}
 
-	public void update(int idx) {
+	public void updateCommentCnt(int idx) {
 		SqlSession mapper = sqlFactory.openSession();
 		mapper.update("updateCommentCnt",idx);
 		mapper.commit();

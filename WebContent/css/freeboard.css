@@ -116,9 +116,11 @@ span {
 }
 
 pre {
-	font-size: 1.1em;
+	font-size: small;
 	color: blue;
-	padding-bottom: 10px;
+	padding-bottom: 5px;
+	line-height: 1.3em;
+	font-family: 맑은고딕, Malgun Gothic, sans-serif;
 }
 
 /* 글 비밀번호 입력 모달 */
@@ -142,7 +144,7 @@ pre {
     padding-bottom : 20px;
    /*  border: 3px solid#4080bf; */
     width: 30%; /* Could be more or less, depending on screen size */
-    font-size: 1.1em;
+    font-size: xx-small;
     border-radius: 2px;
 }
 
