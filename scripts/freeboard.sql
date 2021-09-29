@@ -3,7 +3,7 @@
 create  table freeboard(
 	idx int not null auto_increment,
 	name varchar(30) not null, 		-- 작성자
-	password varchar(10) not null, 	-- 글 비밀번호 (필요할때만 사용)
+	password varchar(10) not null, 	-- 글 비밀번호
 	subject varchar(40) not null, 	-- 글 제목
 	content varchar(2000) not null, -- 내용
 	readCount int default 0, 		-- 조회수
@@ -12,8 +12,8 @@ create  table freeboard(
 	commentCount smallint default 0,			-- 댓글 갯수
 	primary key(idx)
 );
-alter table freeboard modify column wdate timestamp
-default current_timestamp; --timezone에 따라 설정
+alter table freeboard modify column wdate timestamp 
+default current_timestamp;  -- timezone에 따라 설정
 
 insert into freeboard (name,password,subject,content,ip)
 	values ('honey','1111','웰컴~~','하이 반가워','192.168.17.3');
@@ -56,3 +56,57 @@ update freeboard set readCount = readCount+1 where idx=1;
 
 delete from freeboard where idx=145 and password = '1111';
 delete from freeboard where idx=145;
+
+-- 로그인 기능 : 비밀번호 체크
+select * from freeboard f where idx= 1 and password = '1211'; -- 잘못된 비밀번호 : 쿼리결과 null
+select * from freeboard f where idx= 1 and password = '1111'; -- 올바른 비밃너호 : 쿼리결과 1개 행 조회
+
+
+-- 댓글 테이블 : board_comment
+
+create  table board_comment(
+	idx int not null auto_increment,
+	mref int not null, 				-- 메인 글(부모글)의 idx값
+	name varchar(30) not null, 		-- 작성자
+	password varchar(10) not null, 	-- 글 비밀번호
+	content varchar(2000) not null, -- 내용
+	wdate timestamp default current_timestamp,	-- 서버의 현재날짜
+	ip varchar(15) default '127.0.0.1',			-- 작성자 ip 
+	primary key(idx),
+	foreign key(mref) references freeboard(idx)
+);
+
+-- 1)
+insert into board_comment(mref,name,password,content,ip)
+	values (144,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+insert into board_comment(mref,name,password,content,ip)
+	values (143,'사나','1234','오늘 하루도 무사히!','192.168.11.11');
+insert into board_comment(mref,name,password,content,ip)
+	values (144,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+insert into board_comment(mref,name,password,content,ip)
+	values (143,'사나','1234','오늘 하루도 무사히!','192.168.11.11');
+
+-- 댓글 개수 (글목록에서 필요합니다.)
+select count(*) from board_comment bc where mref=144;	-- 144번글의 댓글 갯수
+select count(*) from board_comment bc where mref=143;	-- 143번글의 댓글 갯수
+select count(*) from board_comment bc where mref=100; 	-- 100번글의 댓글 갯수
+
+-- 2) 댓글 리스트
+select * from board_comment where mref = 144;
+select * from board_comment where mref = 143;
+select * from board_comment where mref = 100;
+-- 3) 글목록 실행하는 dao.getList() 보다 앞에서 댓글갯수를 update
+update freeboard set commentCount = 
+	(select count(*) from board_comment  where mref=144) 
+	where idx=144;
+update freeboard set commentCount = 
+	(select count(*) from board_comment  where mref=143) 
+	where idx=143;
+
+-- 4) 글 상세보기에서 댓글 입력 후 저장할 때
+update freeboard set commentCount = commentCount + 1 where idx=0;
+
+select * from freeboard;
+
+
+

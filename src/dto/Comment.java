@@ -9,14 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Freeboard {
+public class Comment {
 	private int idx;
+	private int mref;
 	private String name;
 	private String password;
-	private String subject;
 	private String content;
-	private int readCount;
-	private Timestamp wdate;
+	private Timestamp  wdate;
 	private String ip;
-	private short commentCount;
 }

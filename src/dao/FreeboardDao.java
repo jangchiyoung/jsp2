@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionException;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import dto.Freeboard;
@@ -24,9 +23,10 @@ public class FreeboardDao {
 		List<Freeboard> list = null;
 		SqlSession mapper = sqlFactory.openSession();
 		list = mapper.selectList("getList",map);  
-		mapper.close();
+	//	mapper.close();
 		return list;
 	}
+	
 	//idx로 한개 행 조회
 	public Freeboard getOne(int idx) {
 		SqlSession mapper = sqlFactory.openSession();
@@ -34,6 +34,7 @@ public class FreeboardDao {
 		mapper.close();
 		return dto;
 	}
+	
 	//테이블 데이터 행의 개수 조회
 	public int getCount() {
 		SqlSession mapper = sqlFactory.openSession();
@@ -41,13 +42,14 @@ public class FreeboardDao {
 		mapper.close();
 		return cnt;
 	}
+	
 	//테이블 데이터 추가
 	public void insert(Freeboard dto) {
-			SqlSession mapper = sqlFactory.openSession();
-			mapper.insert("insert", dto);
-			mapper.commit();
-			mapper.close();
-		}
+		SqlSession mapper = sqlFactory.openSession();
+		mapper.insert("free.board.insert", dto);
+		mapper.commit();
+		mapper.close();
+	}
 	
 	public void update(Freeboard dto) {
 		SqlSession mapper = sqlFactory.openSession();
@@ -56,11 +58,18 @@ public class FreeboardDao {
 		mapper.close();
 	}
 	
-	public int delete(int idx) {
+	public int delete(Map<String,Object> map) {
 		SqlSession mapper = sqlFactory.openSession();
-		int n = mapper.delete("delete", idx);
+		int n = mapper.delete("delete", map);
 		mapper.commit();
 		mapper.close();
 		return n;
+	}
+	
+	public Freeboard passwordCheck(Map<String,Object> map) {
+		SqlSession mapper = sqlFactory.openSession();
+		Freeboard dto = mapper.selectOne("passwordCheck",map);
+		mapper.close();
+		return dto;
 	}
 }

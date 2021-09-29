@@ -1,14 +1,30 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.HashMap"%>
 <%@page import="dao.FreeboardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
 	int idx = Integer.parseInt(request.getParameter("idx"));
+	String password = request.getParameter("password");
+
 	FreeboardDao dao = FreeboardDao.getInstance();
-	dao.delete(idx);
-	out.print("<script>");
-	out.print("alert('고객 idx "+idx+" 삭제되었습니다.');");
-	out.print("location.href='listAction.jsp';");
-	out.print("</script>");
+	Map<String,Object> map = new HashMap<>();
+	map.put("idx", idx);
+	map.put("password", password);
 	
-//	response.sendRedirect("list.jsp");   //out.print 출력이 안됩니다.
+	int n = dao.delete(map); //주요  실행 메소드
+//	out.print(n);
+	out.print("<script>");
+	String message=null;
+	String href= null;
+	if(n==1) { //정상 delete 실행
+		message= "글 삭제 되었습니다.";
+		href="listAction.jsp";
+	}else { //n=0: password 가 틀릴때
+		message= "글 비밀번호가 일치하지 않습니다.";
+		href="detailAction.jsp?page=1&idx="+idx;
+	}
+	out.print("alert('"+message+"');");
+	out.print("location.href='"+href+"';");
+	out.print("</script>");
 %>
