@@ -10,23 +10,35 @@ import mybatis.SqlSessionBean;
 
 public class CommentDao {
 	private static CommentDao dao = new CommentDao();
-	private CommentDao() { }
+
+	private CommentDao() {
+	}
+
 	public static CommentDao getInstance() {
 		return dao;
 	}
-	
+
 	SqlSessionFactory sqlFactory = SqlSessionBean.getSessionFactory();
-	//모든 테이블 데이터 조회
-	public List<Comment> getList(int mref) { 
+
+	
+	public List<Comment> getComments(int mref) {
 		List<Comment> list = null;
 		SqlSession mapper = sqlFactory.openSession();
-		list = mapper.selectList("getcomments",mref);  
+		list = mapper.selectList("getcomments", mref);
 		mapper.close();
 		return list;
 	}
-	public void intsert(Comment dto) {
+
+	public void insert(Comment dto) {
 		SqlSession mapper = sqlFactory.openSession();
-		mapper.insert("comment.insert", dto); //mapper xml 파일에서  네임스페이스.id 로 첫번째 인자 
+		mapper.insert("comment.insert", dto); // mapper xml 파일의 네임스페이스.id 로 첫번째 인자값.
+		mapper.commit();
+		mapper.close();
+	}
+
+	public void update(int idx) {
+		SqlSession mapper = sqlFactory.openSession();
+		mapper.update("updateCommentCnt",idx);
 		mapper.commit();
 		mapper.close();
 	}

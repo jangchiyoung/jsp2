@@ -59,8 +59,8 @@
 		<hr class="line">
 		<div>
 			<span>댓글</span>
-			<span>commentCount</span>
-			<span>3열</span>
+			<span>${bean.commentCount}</span>
+			<span></span>
 		</div>
 		<hr class="line">
 		<ul id="main">
@@ -85,6 +85,19 @@
 					</li>
 				</ul>
 			</li>
+			<c:forEach var="cmt" items="${cmtlist }">
+			<li>
+				<ul>
+					<li>${cmt.name }</li> 
+					<li>${cmt.ip }</li> 
+					<li>${cmt.wdate }</li> 
+				</ul>
+			</li>
+			<li>
+				<pre>${cmt.content }</pre>
+			</li>
+			</c:forEach>
+			
 		</ul>
 	</form>
 </div>
