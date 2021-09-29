@@ -60,7 +60,7 @@
 		<hr class="line">
 		<div>
 			<span>댓글</span>
-			<span>${bean.commentCount}</span>
+			<span>[${bean.commentCount}]</span>
 			<span></span>
 		</div>
 		<hr class="line">
@@ -92,6 +92,8 @@
 					<li style="font-size: 0.5px">${cmt.name }</li> 
 					<li style="font-size: 0.5px">${cmt.ip }</li> 
 					<li style="font-size: 0.5px">${cmt.wdate }</li> 
+					<!-- 댓글삭제 : 글비밀번호 확인X, 댓글idx, 메인글idx -->
+					<li><a href="javascript:deleteCmt('${cmt.idx }','${bean.idx }')">삭제</a></li> 
 				</ul>
 			</li>
 			<li>
@@ -128,8 +130,9 @@
 	var span = document.getElementsByClassName("close")[0];
 
 	span.onclick = function() {	//span 요소의 onclick 속성값에 해당하는 함수를 설정합니다.
-	modal.style.display = "none";   //modal 화면에 안보이기   닫기 기능 구현
+		modal.style.display = "none";   //modal 화면에 안보이기   닫기 기능 구현
 	}
+	
 	function deleteOk() {
 		const yn = confirm('글을 삭제하시겠습니까?');
 		if(yn) {
@@ -143,8 +146,19 @@
 			return false;
 		}
 	}
-	function deleteSet(){
+	
+	function deleteSet() {
 		document.getElementById('myModal').style.display='block';		
+	}
+	
+	function deleteCmt(cmtidx,idx) {
+		console.log(cmtidx);console.log(idx);
+		const yn = confirm('댓글 삭제하시겠습니까?');
+		if(yn) {
+			location.href='commentAction.jsp?del=&cmtidx='+cmtidx+ "&idx="+idx;
+		}else {
+			alert('댓글 삭제 취소합니다.');
+		}
 	}
 </script>
 

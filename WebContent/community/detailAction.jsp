@@ -12,7 +12,9 @@
 	FreeboardDao dao = FreeboardDao.getInstance();
 	Freeboard bean = dao.getOne(idx);
 	
+	//freeboard 테이블의 idx 의 댓글 목록 가져오기
 	CommentDao cdao = CommentDao.getInstance();
+	cdao.updateCountAll(idx); //댓글 갯수 update
 	List<Comment> cmts = cdao.getComments(idx);
 	request.setAttribute("cmtlist", cmts);
 	

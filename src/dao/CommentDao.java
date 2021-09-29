@@ -9,6 +9,7 @@ import dto.Comment;
 import mybatis.SqlSessionBean;
 
 public class CommentDao {
+	SqlSessionFactory sqlFactory = SqlSessionBean.getSessionFactory();
 	private static CommentDao dao = new CommentDao();
 
 	private CommentDao() {
@@ -18,9 +19,6 @@ public class CommentDao {
 		return dao;
 	}
 
-	SqlSessionFactory sqlFactory = SqlSessionBean.getSessionFactory();
-
-	
 	public List<Comment> getComments(int mref) {
 		List<Comment> list = null;
 		SqlSession mapper = sqlFactory.openSession();
@@ -36,10 +34,26 @@ public class CommentDao {
 		mapper.close();
 	}
 
+	public void delete(int idx) {
+		SqlSession mapper = sqlFactory.openSession();
+		mapper.delete("comment.delete", idx);
+		mapper.commit();
+		mapper.close();
+	}
+	
 	public void updateCommentCnt(int idx) {
 		SqlSession mapper = sqlFactory.openSession();
 		mapper.update("updateCommentCnt",idx);
 		mapper.commit();
 		mapper.close();
 	}
+	
+	public void updateCountAll(int idx) {
+		SqlSession mapper = sqlFactory.openSession();
+		mapper.update("updateCountAll",idx);
+		mapper.commit();
+		mapper.close();
+	}
+	
 }
+
