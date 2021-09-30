@@ -26,7 +26,7 @@ public class PageDto {
 		this.currentPage=(currentPage<1)? 1:currentPage;
 		
 		//mysql 의 limit 사용할 때
-		int startNo=(this.currentPage-1)*pageSize;
+		startNo=(this.currentPage-1)*pageSize;
 		
 		startPage=(this.currentPage-1)/10*10+1; //페이지 번호 리스트 10개씩
 		//현재 페이지 57 , startPage=51;
@@ -34,5 +34,6 @@ public class PageDto {
 		//현재 페이지 156 , startPage=151;
 		//현재 페이지 160 , startPage=151;
 		endPage = startPage+9;
+		endPage = endPage > totalPage ? totalPage:endPage; //totalPage보다 큰값에 대한 제한.
 	}
 }
