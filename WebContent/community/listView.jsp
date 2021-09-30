@@ -50,10 +50,9 @@
 			</c:forEach>
 		</ul>
 		<div style="margin: auto;">
-			Go!<a class="button" href="insertView.jsp">글쓰기</a>&nbsp;&nbsp; <a
-				class="button" href="${pageContext.request.contextPath }">홈 :
-				${pageContext.request.contextPath } </a>&nbsp;&nbsp;&nbsp;작성글 총 개수 :
-			${pageDto.totalCount}
+			Go!<a class="button" href="insertView.jsp">글쓰기</a>&nbsp;&nbsp; 
+		 	   <a class="button" href="${pageContext.request.contextPath }">홈 : ${pageContext.request.contextPath } 
+				</a>&nbsp;&nbsp;&nbsp;작성글 총 개수 :${pageDto.totalCount}
 		</div>
 		<!-- 글목록 페이지 처리 : pagination -->
 		<div style="text-align: center;">
@@ -67,8 +66,7 @@
 			
 			<c:forEach var="i" begin="${pageDto.startPage}" end="${pageDto.endPage}">
 				<a class="pagenum
-				<c:if test="${pageDto.currentPage==i }">current
-				</c:if>
+					<c:if test="${pageDto.currentPage==i }">current</c:if>
 				" href="?page=${i}">${i}</a>
 			</c:forEach>
 			

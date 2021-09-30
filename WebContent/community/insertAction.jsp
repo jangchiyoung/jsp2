@@ -9,6 +9,8 @@
 	String password = request.getParameter("password");
 	String content = request.getParameter("content");
 	String ip = request.getRemoteAddr();
+	
+	
 	Freeboard dto = new Freeboard();
 	dto.setIp(ip);
 	dto.setName(name);

@@ -10,7 +10,7 @@ a{
 	text-decoration: none;
 	height: 35px;
 	width: 160px;
-	margin: 20px;
+	margin: 30px;
 	color: gray;
 	text-align: center;
 	border: 1px solid gray;
@@ -31,7 +31,7 @@ a{
 	<a href="${pageContext.request.contextPath }">HOME</a>
 	<a href="javascript:history.back()">뒤로가기</a>
 	<!-- 상대경로 : 현재 위치를 기준으로 ../또는 ./ 또는 경로명 
-		  현재경로 : 이 애플리케이션의 context 기준으로 합니다.
+		  절대경로 : 이 애플리케이션의 context 기준으로 합니다.
 	   -->
 	</div>
 </div>

@@ -5,7 +5,6 @@ ul #main{
 		display:flex;
 		flex-direction:column;
 		list-style: none;
-
 	}
 ul .row {
 		display: flex;
@@ -37,9 +36,9 @@ ul .row {
     text-decoration: none;  /*  밑줄제거  */
     cursor: pointer;
     display: inline-block;
-   text-align:center;
-   font-size: 9pt;
-   border-radius: 2px;
+   		text-align:center;
+  		font-size: 9pt;
+  		border-radius: 2px;
 }
 .pagenum:hover{
      background-color: gray;

@@ -16,7 +16,7 @@
 	<!-- 문서가 생성될때 실행 -->
 	<h3>동아리 커뮤니티</h3>
 	<hr>
-	<div style="width: 80%; margin: auto;">
+	<div style="width: 80%; margin: auto; max-width: 700px;">
 		<ul id="main">
 			<li>
 				<ul class="row">
@@ -46,9 +46,9 @@
 			</li>
 		</ul>
 		<div style="text-align: center; margin-bottom: 10px;">
-			<a class="button" href="updateAction.jsp?idx=${bean.idx}&page=${page}">수정</a> <a
-				class="button" onclick="deleteSet()">삭제</a> <a class="button"
-				href="listAction.jsp?page=${page}">목록</a>
+			<a class="button" href="updateAction.jsp?idx=${bean.idx}&page=${page}">수정</a> 
+			<a class="button" onclick="deleteSet()">삭제</a> 
+			<a class="button" href="listAction.jsp?page=${page}">목록</a>
 		</div>
 		<!-- 메인글 출력 끝 -->
 		<!-- 댓글 시작 -->
@@ -56,7 +56,9 @@
 			<input type="hidden" name="mref" value="${bean.idx }">
 			<hr class="line">
 			<div>
-				<span>댓글</span> <span>[${bean.commentCount}]</span> <span></span>
+				<span>댓글</span> 
+				<span>[${bean.commentCount}]</span> 
+				<span></span>
 			</div>
 			<hr class="line">
 			<ul id="main">
@@ -106,9 +108,10 @@
 					onsubmit="return deleteOk()">
 					<input type="hidden" name="idx" value="${bean.idx }"><!--삭제할 글번호-->
 					<input type="hidden" name="page" value="${page }">
-					<input type="password" name="password" size="10"> <input
-						type="submit" value="확인" style="padding: 5px 20px;"> <span
-						style="color: red; font-size: 0.8em;" id="err"></span>
+					<input type="password" name="password" size="10"> 
+					<input type="submit" value="확인" style="padding: 5px 20px;">
+					<br>
+					<span style="color: red; font-size: 0.8em;" id="err"></span>
 				</form>
 			</div>
 		</div>

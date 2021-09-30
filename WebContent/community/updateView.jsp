@@ -19,17 +19,17 @@ function post_data() {
  <input type="hidden" name="idx" value="${bean.idx}">
  <input type="hidden" name="page" value="${page }">
  <table>
- 	<tr><td width="35%" class="td1">제목</td>
+ 	<tr><th width="35%" class="td1">제목</th>
  		<td><input type="text" name="subject" value="${bean.subject }" size="50" required></td>
  	</tr>
- 	<tr><td class="td1">작성자</td>
+ 	<tr><th class="td1">작성자</th>
  		<td><input type="text" name="name" value="${bean.name}" size="50" disabled></td>
  	</tr>
  	
- 	<tr><td class="td1">글 비밀번호</td>
- 		<td><input type="password" name="password" size="70" class="input1"></td>
+ 	<tr><th class="td1">글 비밀번호</th>
+ 		<td><input type="password" name="password"></td>
  	</tr>
- 	<tr><td class="td1">내용</td>  <!-- textarea 의 크기 : rows="20" cols="80" -->
+ 	<tr><th class="td1">내용</th>  <!-- textarea 의 크기 : rows="20" cols="80" -->
  		<td><textarea  rows="20" cols="80" name="content" required>${bean.content}</textarea></td>
  	</tr>
  	<tr><td colspan="2" align="center">
