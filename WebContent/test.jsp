@@ -13,6 +13,5 @@
 	boolean result =readIdx.contains("/344/");
 	out.print(result);
 %>
-
 </body>
 </html>

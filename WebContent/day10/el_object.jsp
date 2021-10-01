@@ -18,7 +18,8 @@
 	//session.setAttribute("data", "hi jsp");
 	//session 에 저장된 애트리뷰트는 세션 time out 전까지 또는 세션 종료되기전까지 남아있습니다.
 	%>
-	<% application.setAttribute("data4", "hello java"); 
+	<% application.setAttribute("data4", "hello java"); //톰캣서버가 종료되거나,애플리케이션이 서버에서 종료되면
+														//그때 application 객체가 소멸됩니다.
 	application.setAttribute("data", "hello java");
 	%>
 
