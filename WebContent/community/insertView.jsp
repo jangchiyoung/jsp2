@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,7 @@ function post_data() {
  <table>
  	<tr><th>제목</th>
  		<td><!-- <input type="text" name="subject" size="50" required> -->
- 		<input type="text" name="name" size="500 readonly value="${sessionScope.user.name }">
+ 		<input type="text" name="name" size="500 readonly value="${sessionScope.user.name }>
  		</td>
  		
  	</tr>
