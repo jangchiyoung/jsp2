@@ -35,14 +35,14 @@
 	
 	}else {
 		//로그인 정보 불일치
-//		out.print("<script>");
-//		out.print("alert('로그인 정보가 올바르지 않습니다.');");
-//		out.print("location.href='loginView.jsp';"); //home.jsp로 url 이동
-//		out.print("</script>");
+		out.print("<script>");
+		out.print("alert('로그인 정보가 올바르지 않습니다.');");
+		out.print("location.href='loginView.jsp';"); //home.jsp로 url 이동
+		out.print("</script>");
 
+	}
 		request.setAttribute("message", "로그아웃 되었습니다.");
 		request.setAttribute("url", "home.jsp");
 		pageContext.include("error/alert.jsp");
 		//response.sendRedirect("loginView.jsp");
-	}
 %>

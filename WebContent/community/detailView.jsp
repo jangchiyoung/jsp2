@@ -87,7 +87,7 @@
 							<li style="font-size: 0.5px">${cmt.wdate }</li>
 							<!-- 댓글삭제 : 글비밀번호 확인X, 댓글idx, 메인글idx -->
 							<li><a
-								href="javascript:deleteCmt('${cmt.idx }','${bean.idx }'),'${page}">삭제</a></li>
+								href="javascript:deleteCmt('${cmt.idx }','${bean.idx }','${page}')">삭제</a></li>
 						</ul>
 					</li>
 					<li><pre>${cmt.content }</pre></li>
@@ -147,7 +147,7 @@
 		console.log(cmtidx);console.log(idx);
 		const yn = confirm('댓글 삭제하시겠습니까?');
 		if(yn) {
-			location.href='commentAction.jsp?del=&cmtidx='+cmtidx+ "&idx="+idx+"$page="+page;
+			location.href='commentAction.jsp?del=&cmtidx='+cmtidx+ "&idx="+idx+"&page="+page;
 		}else {
 			alert('댓글 삭제 취소합니다.');
 		}
